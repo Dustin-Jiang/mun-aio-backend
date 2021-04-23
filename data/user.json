@@ -1,0 +1,17 @@
+[
+  {
+    "name": "张静璇",
+    "conference": 1,
+    "permission": [
+      "news",
+      "DH",
+      "DM",
+      "checkNews",
+      "checkCommand",
+      "command",
+      "file"
+    ],
+    "email": "zbl@test.com",
+    "md5": "5f4dcc3b5aa765d61d8327deb882cf99"
+  }
+]

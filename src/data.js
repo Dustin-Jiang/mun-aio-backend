@@ -6,7 +6,11 @@ exports.get = (file, chooser, callback) => {
     obj = JSON.parse(data);
     if(typeof(callback === "function")) {
       if (chooser != "") {
-        callback(obj[0][chooser]);
+        val = {}
+        for (i in obj) {
+          val[i] = obj[i][chooser];
+        }
+        callback(val);
       } else {
         callback(obj);
       }      

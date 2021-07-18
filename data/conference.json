@@ -1,0 +1,21 @@
+[
+  {
+    "name": "中文特殊理事会",
+    "note": "杏鸣中文场",
+    "functions": [
+      "files",
+      "news",
+      "command",
+      "checkCommand"
+    ]
+  },
+  {
+    "name": "主新闻中心",
+    "note": "杏鸣MPC",
+    "functions": [
+      "files",
+      "news",
+      "checkNews"
+    ]
+  }
+]

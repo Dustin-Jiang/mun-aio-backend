@@ -11,8 +11,8 @@ exports.login = (req, res, content) => {
     }
   }
   errorMsg = {
-    "status": 404,
+    "status": 403,
     "content": {}
   };
-  res.status(404).send(errorMsg);
+  res.status(403).send(errorMsg);
 }

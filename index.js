@@ -30,6 +30,12 @@ app.get('/user/:chooser', (req, res) => {
   });
 })
 
+app.get('/conference/:id', (req, res) => {
+  data.get("./data/conference.json", "", (content) => {
+    res.send(content[req.params.id]);
+  })
+})
+
 app.listen('5000', () => {
   console.log("Listening port 5000 successfully.")
 })

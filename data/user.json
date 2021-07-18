@@ -1,22 +1,24 @@
 [
   {
+    "id": 1,
     "name": "张静璇",
-    "conference": 1,
+    "conference": 0,
     "permission": [
-      "news",
       "DH",
       "DM",
+      "news",
       "checkNews",
-      "checkCommand",
+      "file",
       "command",
-      "file"
+      "checkCommand"
     ],
     "email": "zbl@test.com",
     "md5": "5f4dcc3b5aa765d61d8327deb882cf99"
   },
   {
+    "id": 2,
     "name": "Dustin Jiang",
-    "conference": 2,
+    "conference": 1,
     "permission": [
       "news",
       "file"

@@ -16,7 +16,7 @@ exports.change = (req, res, userID, type) => {
         res.sendStatus(403);
       }
     })
-    data.edit("./data/user.json", [1, "name"], "foo", (result) => {
+    data.edit.changePassword("./data/user.json", 1, password["new"], (result) => {
       console.log(result);
     })
   }

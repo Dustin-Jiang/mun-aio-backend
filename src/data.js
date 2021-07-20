@@ -1,4 +1,6 @@
 var fs = require("fs")
+var crypto = require("crypto");
+var md5 = crypto.createHash("md5");
 
 exports.get = (file, chooser, callback) => {
   fs.readFile(file, 'utf8', (err, data) => {
@@ -18,35 +20,19 @@ exports.get = (file, chooser, callback) => {
   })
 }
 
-exports.edit = (file, chooser, edit, callback) => {
-  fs.readFile(file, 'utf8', (err, data) => {
-    if (err) throw err;
-    obj = JSON.parse(data);
-    if (typeof(chooser) != 'object') throw "Chooser Error";
-    // for (i in chooser) {
-    //   obj = obj[chooser[i]];
-    // }
-    if (typeof(callback)!='function') throw "Callback requires a function";
-    console.log(__changeObjectValue(obj, chooser, 0, edit));
-  })
-}
-
-function __changeObjectValue(obj, keys, keysNum, data) {
-  if (keysNum > (keys.length - 1)) {
-    return ;
+exports.edit = {
+  changePassword(file, chooser, edit, callback) {
+    fs.readFile(file, 'utf8', (err, data) => {
+      if (err) throw err;
+      obj = JSON.parse(data);
+      if (typeof(chooser) != 'number') throw "Chooser Error";
+      console.log(edit);
+      obj[chooser]["md5"] = md5.update(edit).digest("hex");
+      if (typeof(callback)!='function') throw "Callback requires a function";
+      fs.writeFile(file, JSON.stringify(obj), 'utf8', (err) => {
+        if (err) throw err;
+        return ;
+      })
+    });
   }
-  result = {};
-  for (i in obj) {
-    if (i != keys[keysNum]) {
-      result[i] = obj[i];
-      continue;
-    } else {
-      if (keysNum == (keys.length - 1)) {
-        result[keys[keysNum]] = data;
-        return(result);
-      }
-      result[i] = __changeObjectValue(obj[i], keys, (keysNum + 1), data);
-    }
-  }
-  return(result);
 }

@@ -2,6 +2,7 @@ var express = require('express');
 var app = express()
 var data = require("./src/data");
 var login = require("./src/login");
+var settings = require("./src/settings");
 
 app.get('/',(req, res)=> {
   res.set({"Content-Type": "text/css"})
@@ -35,6 +36,10 @@ app.get('/conference/:id', (req, res) => {
     res.send(content[req.params.id]);
   })
 })
+
+app.get('/settings/:user/:type/*', (req, res) => {
+  result = settings.change(req, res, req.params.user, req.params.type);
+});
 
 app.listen('5000', () => {
   console.log("Listening port 5000 successfully.")
